@@ -187,10 +187,40 @@ footer{
 
 <header>
   <div class="top">
-    <img src="logo.png">
+    <img src="logo.png" alt="Logo BrusMods">
     <span class="brand">BrusMods</span>
   </div>
 </header>
+
+<style>
+/* CONTENEDOR */
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+}
+
+/* LOGO MÁS GRANDE */
+.top img{
+  height:55px;   /* 👈 aquí el tamaño */
+  width:auto;
+}
+
+/* TEXTO */
+.brand{
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+/* EN PC AÚN MÁS GRANDE */
+@media (min-width:900px){
+  .top img{
+    height:65px;
+  }
+}
+</style>
 
 <div class="box">
   <h2>Completa los pasos para continuar 👇</h2>
