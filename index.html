@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,20 +6,33 @@
 <title>BRUSMODS</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 *{
   box-sizing:border-box;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  font-family:'Poppins',system-ui;
 }
 
 body{
   margin:0;
-  background:#7f1d1d;
+  background:radial-gradient(circle at top, #3a0d0d, #000);
+  color:#fff;
+  overflow:hidden;
+}
+
+/* PARTICLES */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
 /* HEADER */
 header{
   background:#0b0b0b;
   padding:15px;
+  position:relative;
+  z-index:2;
 }
 
 .top{
@@ -33,7 +45,6 @@ header{
 header img{ height:28px; }
 
 .brand{
-  color:white;
   font-weight:700;
   font-size:16px;
   letter-spacing:1px;
@@ -43,41 +54,81 @@ header img{ height:28px; }
 .box{
   max-width:420px;
   margin:40px auto;
-  background:#fff;
-  border-radius:14px;
-  padding:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  background:#0f0f0f;
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 0 40px #ff003322;
   text-align:center;
+  position:relative;
+  z-index:2;
 }
 
-.sub-btn{
+.box h2{
+  color:#ff0033;
+}
+
+.box p{
+  color:#ccc;
+  font-size:14px;
+}
+
+/* NEON BUTTON */
+.btn-neon{
   width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:none;
-  background:#dc2626;
-  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  border:2px solid #ff0033;
+  background:transparent;
+  color:#ff0033;
   font-size:15px;
   font-weight:600;
   cursor:pointer;
   margin-bottom:20px;
+  position:relative;
+  overflow:hidden;
+  transition:.3s;
 }
 
+.btn-neon::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, transparent, #ff0033, transparent);
+  transform:translateX(-100%);
+  transition:.5s;
+}
+
+.btn-neon:hover::before{
+  transform:translateX(100%);
+}
+
+.btn-neon:hover{
+  color:#fff;
+  box-shadow:0 0 20px #ff0033,0 0 40px #ff0033;
+}
+
+.btn-neon.disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+/* LOADER */
 .loader{
   display:none;
   align-items:center;
   justify-content:center;
   gap:10px;
   margin:20px 0;
-  color:#555;
+  color:#aaa;
   font-size:14px;
 }
 
 .spinner{
   width:22px;
   height:22px;
-  border:3px solid #ddd;
-  border-top:3px solid #dc2626;
+  border:3px solid #333;
+  border-top:3px solid #ff0033;
   border-radius:50%;
   animation:spin 1s linear infinite;
 }
@@ -86,34 +137,21 @@ header img{ height:28px; }
   to{ transform:rotate(360deg); }
 }
 
-.go-btn{
-  width:100%;
-  padding:15px;
-  border-radius:10px;
-  border:none;
-  background:#9e9e9e;
-  color:#fff;
-  font-size:15px;
-  font-weight:600;
-  cursor:not-allowed;
-}
-
-.go-btn.active{
-  background:#dc2626;
-  cursor:pointer;
-}
-
 footer{
   text-align:center;
   margin-top:20px;
   font-size:12px;
-  color:#fff;
+  color:#777;
   font-weight:600;
+  position:relative;
+  z-index:2;
 }
 </style>
 </head>
 
 <body>
+
+<canvas id="particles"></canvas>
 
 <header>
   <div class="top">
@@ -126,7 +164,7 @@ footer{
   <h2>Completa los pasos para continuar 👇</h2>
   <p>Debes suscribirte para desbloquear el enlace.</p>
 
-  <button class="sub-btn" id="subBtn">
+  <button class="btn-neon" id="subBtn">
     Suscríbete a mi canal de YouTube
   </button>
 
@@ -135,14 +173,15 @@ footer{
     <span>Obteniendo link...</span>
   </div>
 
-  <button class="go-btn" id="goBtn" disabled>
+  <button class="btn-neon disabled" id="goBtn" disabled>
     IR AL ENLACE DESTINO 🔗
   </button>
 </div>
 
-<footer>Powered by BrusMods</footer>
+<footer>© 2025 BRUSMODS</footer>
 
 <script>
+/* LINKS */
 const youtubeLink = "https://youtube.com/@brusmodsofficial?si=ajbMPsh8vckkTbKp";
 const destinoLink = "https://TU_ENLACE_DESTINO.com";
 
@@ -150,27 +189,70 @@ const subBtn = document.getElementById("subBtn");
 const loader = document.getElementById("loader");
 const goBtn = document.getElementById("goBtn");
 
+/* SUBSCRIBE */
 subBtn.addEventListener("click", () => {
   window.open(youtubeLink, "_blank");
 
+  subBtn.classList.add("disabled");
   subBtn.disabled = true;
-  subBtn.style.background = "#9e9e9e";
-  subBtn.style.cursor = "not-allowed";
 
   loader.style.display = "flex";
 
   setTimeout(() => {
     loader.style.display = "none";
     goBtn.disabled = false;
-    goBtn.classList.add("active");
-  }, 10000); // tiempo de espera (10 segundos)
+    goBtn.classList.remove("disabled");
+  }, 10000);
 });
 
+/* GO */
 goBtn.addEventListener("click", () => {
   if(!goBtn.disabled){
     window.location.href = destinoLink;
   }
 });
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize(){
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+addEventListener("resize", resize);
+resize();
+
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    dx:(Math.random()-.5)*1.2,
+    dy:(Math.random()-.5)*1.2
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#ff0033";
+
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+
+    p.x+=p.dx;
+    p.y+=p.dy;
+
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
