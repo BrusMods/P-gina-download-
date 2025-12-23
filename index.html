@@ -41,14 +41,16 @@ header{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
+  gap:10px;
 }
 
-header img{ height:28px; }
+header img{
+  height:36px;
+}
 
 .brand{
   font-weight:700;
-  font-size:16px;
+  font-size:18px;
   letter-spacing:1px;
 }
 
@@ -57,16 +59,39 @@ header img{ height:28px; }
   max-width:420px;
   margin:40px auto;
   background:rgba(0,0,0,.65);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
   border-radius:18px;
   padding:30px;
   text-align:center;
   position:relative;
   z-index:2;
   border:1px solid rgba(255,0,51,.25);
-  box-shadow:
-    0 0 30px rgba(255,0,51,.25),
-    inset 0 0 20px rgba(255,0,51,.15);
+}
+
+/* SOMBRA SOLO AL FINAL */
+.box::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-90px;
+  transform:translateX(-50%);
+  width:90%;
+  height:130px;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,.65),
+    transparent 70%
+  );
+  z-index:-1;
+}
+
+/* AJUSTE MODO PC */
+@media (min-width: 900px){
+  .box::after{
+    bottom:-150px;
+    height:200px;
+    opacity:.85;
+  }
 }
 
 .box h2{
@@ -145,7 +170,7 @@ header img{ height:28px; }
 
 footer{
   text-align:center;
-  margin-top:20px;
+  margin-top:30px;
   font-size:12px;
   color:#ffb3b3;
   font-weight:600;
@@ -190,7 +215,7 @@ footer{
 <script>
 /* LINKS */
 const youtubeLink = "https://youtube.com/@brusmodsofficial?si=ajbMPsh8vckkTbKp";
-const destinoLink = "https://brusmods.github.io/En-mantenimiento-/";
+const destinoLink = "https://TU_ENLACE_DESTINO.com";
 
 const subBtn = document.getElementById("subBtn");
 const loader = document.getElementById("loader");
