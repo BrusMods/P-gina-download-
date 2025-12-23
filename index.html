@@ -59,6 +59,7 @@ header img{ height:28px; }
   font-size:15px;
   font-weight:600;
   cursor:pointer;
+  margin-bottom:20px;
 }
 
 .loader{
@@ -161,7 +162,7 @@ subBtn.addEventListener("click", () => {
     loader.style.display = "none";
     goBtn.disabled = false;
     goBtn.classList.add("active");
-  }, 5000); // tiempo de espera (5 segundos)
+  }, 10000); // tiempo de espera (10 segundos)
 });
 
 goBtn.addEventListener("click", () => {
