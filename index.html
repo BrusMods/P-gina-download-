@@ -1,158 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRUSMODS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRUSMODS</title>
 
-  <style>
-    *{
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+}
 
-    body{
-      margin:0;
-      background:#7f1d1d;
-    }
+body{
+  margin:0;
+  background:#7f1d1d;
+}
 
-    /* HEADER */
-    header{
-      background:#0b0b0b;
-      padding:15px;
-    }
+/* HEADER */
+header{
+  background:#0b0b0b;
+  padding:15px;
+}
 
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
 
-    header img{
-      height:28px;
-    }
+header img{ height:28px; }
 
-    .brand{
-      color:white;
-      font-weight:700;
-      font-size:16px;
-      letter-spacing:1px;
-    }
+.brand{
+  color:white;
+  font-weight:700;
+  font-size:16px;
+  letter-spacing:1px;
+}
 
-    /* CONTENEDOR */
-    .box{
-      max-width:420px;
-      margin:40px auto;
-      background:#fff;
-      border-radius:14px;
-      padding:25px;
-      box-shadow:0 15px 40px rgba(0,0,0,.15);
-      text-align:center;
-    }
+/* BOX */
+.box{
+  max-width:420px;
+  margin:40px auto;
+  background:#fff;
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  text-align:center;
+}
 
-    .box h2{
-      margin:0 0 10px;
-      font-size:22px;
-    }
+.sub-btn{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  background:#dc2626;
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
 
-    .box p{
-      margin:0 0 25px;
-      color:#555;
-      font-size:14px;
-    }
+.loader{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0;
+  color:#555;
+  font-size:14px;
+}
 
-    /* BOTÓN SUB */
-    .sub-btn{
-      width:100%;
-      padding:14px;
-      border-radius:10px;
-      border:none;
-      background:#f2f2f2;
-      color:#aaa;
-      font-size:15px;
-      margin-bottom:25px;
-      cursor:not-allowed;
-    }
+.spinner{
+  width:22px;
+  height:22px;
+  border:3px solid #ddd;
+  border-top:3px solid #dc2626;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
 
-    /* LOADER */
-    .loader{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:20px;
-      color:#555;
-      font-size:14px;
-    }
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
 
-    .spinner{
-      width:22px;
-      height:22px;
-      border:3px solid #ddd;
-      border-top:3px solid #dc2626;
-      border-radius:50%;
-      animation:spin 1s linear infinite;
-    }
+.go-btn{
+  width:100%;
+  padding:15px;
+  border-radius:10px;
+  border:none;
+  background:#9e9e9e;
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  cursor:not-allowed;
+}
 
-    @keyframes spin{
-      to{ transform:rotate(360deg); }
-    }
+.go-btn.active{
+  background:#dc2626;
+  cursor:pointer;
+}
 
-    /* BOTÓN DESTINO */
-    .go-btn{
-      width:100%;
-      padding:15px;
-      border-radius:10px;
-      border:none;
-      background:#dc2626;
-      color:#fff;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer;
-    }
-
-    .go-btn:hover{
-      background:#b91c1c;
-    }
-
-    /* FOOTER */
-    footer{
-      text-align:center;
-      margin-top:20px;
-      font-size:12px;
-      color:#fff;
-      font-weight:600;
-    }
-  </style>
+footer{
+  text-align:center;
+  margin-top:20px;
+  font-size:12px;
+  color:#fff;
+  font-weight:600;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="top">
-      <img src="logo.png" alt="BrusMods">
-      <span class="brand">BrusMods</span>
-    </div>
-  </header>
+<header>
+  <div class="top">
+    <img src="logo.png">
+    <span class="brand">BrusMods</span>
+  </div>
+</header>
 
-  <div class="box">
-    <h2>Completa los pasos para continuar 👇</h2>
-    <p>Para acceder al enlace destino, deberá completar los siguientes pasos.</p>
+<div class="box">
+  <h2>Completa los pasos para continuar 👇</h2>
+  <p>Debes suscribirte para desbloquear el enlace.</p>
 
-    <button class="sub-btn">Suscríbete a mi canal de YouTube</button>
+  <button class="sub-btn" id="subBtn">
+    Suscríbete a mi canal de YouTube
+  </button>
 
-    <div class="loader">
-      <div class="spinner"></div>
-      <span>Obteniendo link...</span>
-    </div>
-
-    <button class="go-btn">IR AL ENLACE DESTINO 🔗</button>
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <span>Obteniendo link...</span>
   </div>
 
-  <footer>
-    Powered by BrusMods
-  </footer>
+  <button class="go-btn" id="goBtn" disabled>
+    IR AL ENLACE DESTINO 🔗
+  </button>
+</div>
+
+<footer>Powered by BrusMods</footer>
+
+<script>
+const youtubeLink = "https://youtube.com/@brusmodsofficial?si=_gK7khoKU5FvfK2E";
+const destinoLink = "https://www.mediafire.com/file/saxcndgo5w1x4a1/PH_FE_2.apk/file";
+
+const subBtn = document.getElementById("subBtn");
+const loader = document.getElementById("loader");
+const goBtn = document.getElementById("goBtn");
+
+subBtn.addEventListener("click", () => {
+  window.open(youtubeLink, "_blank");
+
+  subBtn.disabled = true;
+  subBtn.style.background = "#9e9e9e";
+  subBtn.style.cursor = "not-allowed";
+
+  loader.style.display = "flex";
+
+  setTimeout(() => {
+    loader.style.display = "none";
+    goBtn.disabled = false;
+    goBtn.classList.add("active");
+  }, 5000); // tiempo de espera (5 segundos)
+});
+
+goBtn.addEventListener("click", () => {
+  if(!goBtn.disabled){
+    window.location.href = destinoLink;
+  }
+});
+</script>
 
 </body>
 </html>
