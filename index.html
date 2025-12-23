@@ -52,25 +52,25 @@ header img{ height:28px; }
   letter-spacing:1px;
 }
 
-/* BOX - AHORA SIN FONDO NEGRO NI BORDE SÓLIDO */
+/* BOX */
 .box{
   max-width:420px;
   margin:40px auto;
-  background:transparent; /* Fondo completamente transparente */
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
   border-radius:18px;
   padding:30px;
   text-align:center;
   position:relative;
   z-index:2;
-  /* Solo glow rojo para definir la forma del cuadro */
+  border:1px solid rgba(255,0,51,.25);
   box-shadow:
-    0 0 30px rgba(255,0,51,.3),
-    inset 0 0 25px rgba(255,0,51,.2);
+    0 0 30px rgba(255,0,51,.25),
+    inset 0 0 20px rgba(255,0,51,.15);
 }
 
 .box h2{
   color:#ff0033;
-  text-shadow: 0 0 10px rgba(255,0,51,.5);
 }
 
 .box p{
@@ -93,7 +93,6 @@ header img{ height:28px; }
   position:relative;
   overflow:hidden;
   transition:.3s;
-  box-shadow: 0 0 15px rgba(255,0,51,.3);
 }
 
 .btn-neon::before{
@@ -111,7 +110,7 @@ header img{ height:28px; }
 
 .btn-neon:hover{
   color:#fff;
-  box-shadow:0 0 25px #ff0033,0 0 50px #ff0033;
+  box-shadow:0 0 20px #ff0033,0 0 40px #ff0033;
 }
 
 .btn-neon.disabled{
@@ -163,7 +162,7 @@ footer{
 
 <header>
   <div class="top">
-    <img src="logo.png" alt="Logo">
+    <img src="logo.png">
     <span class="brand">BrusMods</span>
   </div>
 </header>
