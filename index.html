@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOUSUB.ME</title>
+
+  <style>
+    *{
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    }
+
+    body{
+      margin:0;
+      background:#00ff73;
+    }
+
+    /* HEADER */
+    header{
+      background:#0b0b0b;
+      padding:15px;
+      text-align:center;
+    }
+
+    header img{
+      height:28px;
+    }
+
+    /* CONTENEDOR */
+    .box{
+      max-width:420px;
+      margin:40px auto;
+      background:#fff;
+      border-radius:14px;
+      padding:25px;
+      box-shadow:0 15px 40px rgba(0,0,0,.15);
+      text-align:center;
+    }
+
+    .box h2{
+      margin:0 0 10px;
+      font-size:22px;
+    }
+
+    .box p{
+      margin:0 0 25px;
+      color:#555;
+      font-size:14px;
+    }
+
+    /* BOTÓN SUB */
+    .sub-btn{
+      width:100%;
+      padding:14px;
+      border-radius:10px;
+      border:none;
+      background:#f2f2f2;
+      color:#aaa;
+      font-size:15px;
+      margin-bottom:25px;
+      cursor:not-allowed;
+    }
+
+    /* LOADER */
+    .loader{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+      color:#555;
+      font-size:14px;
+    }
+
+    .spinner{
+      width:22px;
+      height:22px;
+      border:3px solid #ddd;
+      border-top:3px solid #00c95a;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+    }
+
+    @keyframes spin{
+      to{ transform:rotate(360deg); }
+    }
+
+    /* BOTÓN DESTINO */
+    .go-btn{
+      width:100%;
+      padding:15px;
+      border-radius:10px;
+      border:none;
+      background:#9e9e9e;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .go-btn:hover{
+      background:#8a8a8a;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      margin-top:20px;
+      font-size:12px;
+      color:#0b0b0b;
+      font-weight:600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <!-- Logo simple -->
+    <img src="https://i.imgur.com/qy7XnYz.png" alt="YOUSUB.ME">
+  </header>
+
+  <div class="box">
+    <h2>Completa los pasos para continuar 👇</h2>
+    <p>Para acceder al enlace destino, deberá completar los siguientes pasos.</p>
+
+    <button class="sub-btn">Suscríbete a mi canal de YouTube</button>
+
+    <div class="loader">
+      <div class="spinner"></div>
+      <span>Obteniendo link...</span>
+    </div>
+
+    <button class="go-btn">IR AL ENLACE DESTINO 🔗</button>
+  </div>
+
+  <footer>
+    Powered by RM Software
+  </footer>
+
+</body>
+</html>
