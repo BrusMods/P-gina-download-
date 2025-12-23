@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,28 +14,7 @@
 
 body{
   margin:0;
-  background:#000;
-}
-
-/* VIDEO DE FONDO */
-#bg-video{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-2;
-}
-
-.overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.55);
-  z-index:-1;
+  background:#7f1d1d;
 }
 
 /* HEADER */
@@ -135,14 +115,6 @@ footer{
 
 <body>
 
-<!-- VIDEO -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="bg.mp4" type="video/mp4">
-</video>
-
-<!-- OSCURECER VIDEO -->
-<div class="overlay"></div>
-
 <header>
   <div class="top">
     <img src="logo.png">
@@ -171,8 +143,8 @@ footer{
 <footer>Powered by BrusMods</footer>
 
 <script>
-const youtubeLink = "https://youtube.com/@brusmodsofficial";
-const destinoLink = "https://www.mediafire.com/file/saxcndgo5w1x4a1/PH_FE_2.apk/file";
+const youtubeLink = "https://youtube.com/TU_CANAL_YOUTUBE";
+const destinoLink = "https://TU_ENLACE_DESTINO.com";
 
 const subBtn = document.getElementById("subBtn");
 const loader = document.getElementById("loader");
@@ -191,7 +163,7 @@ subBtn.addEventListener("click", () => {
     loader.style.display = "none";
     goBtn.disabled = false;
     goBtn.classList.add("active");
-  }, 10000);
+  }, 10000); // tiempo de espera (10 segundos)
 });
 
 goBtn.addEventListener("click", () => {
