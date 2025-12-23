@@ -52,32 +52,30 @@ header img{ height:28px; }
   letter-spacing:1px;
 }
 
-/* BOX - CORREGIDO PARA ELIMINAR LA SOMBRA NEGRA EXTRA */
+/* BOX */
 .box{
   max-width:420px;
   margin:40px auto;
-  background:transparent;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
   border-radius:18px;
   padding:30px;
   text-align:center;
   position:relative;
   z-index:2;
-  /* Glow externo muy sutil (solo un poco de rojo, sin extenderse mucho) */
+  border:1px solid rgba(255,0,51,.25);
   box-shadow:
-    0 0 15px rgba(255, 0, 51, 0.25),
-    inset 0 0 30px rgba(255, 0, 51, 0.25);
+    0 0 30px rgba(255,0,51,.25),
+    inset 0 0 20px rgba(255,0,51,.15);
 }
 
 .box h2{
   color:#ff0033;
-  text-shadow: 0 0 15px rgba(255,0,51,.6);
-  margin-bottom:10px;
 }
 
 .box p{
   color:#ddd;
   font-size:14px;
-  margin-bottom:25px;
 }
 
 /* NEON BUTTON */
@@ -95,7 +93,6 @@ header img{ height:28px; }
   position:relative;
   overflow:hidden;
   transition:.3s;
-  box-shadow: 0 0 15px rgba(255,0,51,.3);
 }
 
 .btn-neon::before{
@@ -113,7 +110,7 @@ header img{ height:28px; }
 
 .btn-neon:hover{
   color:#fff;
-  box-shadow:0 0 25px #ff0033,0 0 50px #ff0033;
+  box-shadow:0 0 20px #ff0033,0 0 40px #ff0033;
 }
 
 .btn-neon.disabled{
@@ -148,7 +145,7 @@ header img{ height:28px; }
 
 footer{
   text-align:center;
-  margin-top:40px; /* Más margen para separar del box */
+  margin-top:20px;
   font-size:12px;
   color:#ffb3b3;
   font-weight:600;
@@ -165,7 +162,7 @@ footer{
 
 <header>
   <div class="top">
-    <img src="logo.png" alt="Logo">
+    <img src="logo.png">
     <span class="brand">BrusMods</span>
   </div>
 </header>
